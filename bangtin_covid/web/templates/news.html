@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content1 %}
+
+                    <div class="row">
+                        {% if data %}
+                            {% for news in data %}
+                            <div class="col-lg-6">
+                            <!-- Blog post -->
+                                <div class="card mb-4">
+                                    <a href="/post/?id_news={{ news.id }}"><img class="card-img-top" src="{{ news.url_img }}" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">{{ news.publish_date  }}</div>
+                                        <h2 class="card-title h4">{{ news.title }}</h2>
+                                        <p class="card-text">Từ khóa: {{ news.keywords }}</p>
+                                        <p class="card-text">Mô tả: {{ news.description }}</p>
+                                        <a class="btn btn-primary" href="/post/?id_job={{ job.id }}">Xem chi tiết→</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        {% elif data2 %}
+                            {% for news in data2 %}
+                             <div class="col-lg-6">
+                            <!-- Blog post -->
+                                <div class="card mb-4">
+                                    <a href="/post/?id_news={{ news.id }}"><img class="card-img-top" src="{{ news.url_img }}" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">{{ news.publish_date  }}</div>
+                                        <h2 class="card-title h4">{{ news.title }}</h2>
+                                        <p class="card-text">Từ khóa: {{ news.keywords }}</p>
+                                        <p class="card-text">Mô tả: {{ news.description }}</p>
+                                        <a class="btn btn-primary" href="/post/?id_job={{ job.id }}">Xem chi tiết→</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
+
+                        {% else %}
+                        <p class="card-title h2">Không có bài báo nào, hãy thử tìm kiếm!</p>
+                    {% endif %}
+
+
+
+                    </div>
+{% endblock %}
