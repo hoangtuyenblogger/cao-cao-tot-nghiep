@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content1 %}
+
+                    <div class="row">
+                        {% if data %}
+                            {% for news in data %}
+                            <div class="col-lg-6">
+                            <!-- Blog post -->
+                                <div class="card mb-4">
+                                    <a href="/post/?id_news={{ news.id }}"><img class="card-img-top" src="{{ news.url_img }}" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">{{ news.publish_date  }}</div>
+                                        <h2 class="card-title h4">{{ news.title }}</h2>
+                                        <p class="card-text">Từ khóa: {{ news.keywords }}</p>
+                                        <p class="card-text">Mô tả: {{ news.description }}</p>
+                                        <a class="btn btn-primary" href="/post/?id_job={{ job.id }}">Xem chi tiết→</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        <!-- Pagination-->
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            {% if data.has_previous %}
+                                <a href="?page={{ data.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Previous</a>
+
+                            {% endif %}
+                            {% for num in data.paginator.num_pages %}
+                   <li class="page-item active" aria-current="page"><a class="page-link" href="#!">{{num}}</a></li>
+                   {% endfor%}
+
+                            <span>
+        {%                      if data.has_next %}
+                                    <a href="?page={{ data.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Next</a>
+        {%                      endif %}
+                            </span>
+
+
+                        </ul>
+                    </nav>
+
+
+                        {% elif data2 %}
+                            {% for news in data2 %}
+                             <div class="col-lg-6">
+                            <!-- Blog post -->
+                                <div class="card mb-4">
+                                    <a href="/post/?id_news={{ news.id }}"><img class="card-img-top" src="{{ news.url_img }}" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">{{ news.publish_date  }}</div>
+                                        <h2 class="card-title h4">{{ news.title }}</h2>
+                                        <p class="card-text">Từ khóa: {{ news.keywords }}</p>
+                                        <p class="card-text">Mô tả: {{ news.description }}</p>
+                                        <a class="btn btn-primary" href="/post/?id_news={{ news.id }}">Xem chi tiết→</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
+
+                        {% else %}
+                        <p class="card-title h2">Không có bài báo nào, hãy thử tìm kiếm!</p>
+                    {% endif %}
+
+
+
+                    </div>
+{% endblock %}

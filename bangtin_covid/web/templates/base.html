@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Hệ tư vấn việc làm | Nghiên cứu khoa học | Trường Đại Học Thủ Dầu Một" />
+        <meta name="author" content="Hoàng Kim Tuyến | D18HT01 | Viện Kĩ Thuật - Công Nghệ | Đại Học Thủ Dầu Một" />
+        <title>Bảng tin Covid-19 | Trường Đại Học Thủ Dầu Một</title>
+        <!-- Favicon-->
+        <link rel="icon" sizes="32x16" type="image/x-icon" href="{% static 'img/favicon.png' %}" />
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href="/"><img id="changeLogo" src="{% static '/img/logo_tdmu.png' %}"  style="height: 50%;"></a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" href="/news?keyword=">Bảng tin</a></li>-->
+                        <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.facebook.com/hoangtuyen.blogger">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link"  target="_blank" href="/report">File Báo cáo</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">Bảng tin Covid-19</h1>
+                    <p class="lead mb-0">Bảng tin covid-19 được thu thập, xử lí ngôn ngữ tự nhiên và thu gọn bằng kỹ thuật Text mining</p>
+                </div>
+            </div>
+        </header>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post
+                    <div class="card mb-4">
+                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <div class="card-body">
+                            <div class="small text-muted">Kết quả gợi ý</div>
+                            <h2 class="card-title">Featured Tiêu đề công việc</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                            <a class="btn btn-primary" href="#!">Xem chi tiết→</a>
+                        </div>
+                    </div>
+                    -->
+                    {% block content %}
+
+                    {% endblock %}
+
+                    <!-- Nested row for non-featured blog posts-->
+                    {% block content1 %}
+                    {% endblock %}
+                    <!-- Pagination
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                        {% if contacts.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+                        {% endif %}
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Mới nhất</a></li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">Cuối</a></li>
+                        </ul>
+                    </nav>
+                    -->
+                </div>
+
+
+
+
+
+
+
+
+                <!-- Blog entries-->
+
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Tìm kiếm</div>
+                        <div class="card-body">
+                            <form method="get"  action="{% url 'search_news' %}"><!-- -->
+                            <div class="input-group">
+
+                                    <input name="keyword" class="form-control" type="text" placeholder="Tìm kiếm tại đây..."  aria-describedby="button-search" />
+                                    <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+
+                            </div></form>
+
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="card mb-4">
+                        <div class="card-header">Tìm kiếm </div>
+                        <div class="card-body">
+
+                            <form method="get"  action="{% url 'search_news' %}">
+                            <div class="input-group">
+
+
+                                    <select name="keyword" id="keyword" class="form-select" >
+                                          <option disabled selected>Chọn loại vaccine</option>
+
+                                          <option value="AstraZeneca">Vaccine AstraZeneca</option>
+                                        <option value="Vero Cell">Vaccine Vero Cell</option>
+                                         <option value="Pfizer">Vaccine Pfizer</option>
+
+                                    </select>
+                                    <button class="btn btn-primary"  type="submit">Tìm kiếm</button>
+
+                            </div> </form>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="card mb-4">
+                        <div class="card-header">Lọc bài viết theo mặt báo</div>
+                        <div class="card-body">
+
+                            <form method="get"  action="{% url 'search_news' %}">
+                            <div class="input-group">
+
+                                    <select name="tag_news" id="tag_news" class="form-select" >
+                                          <option disabled selected>Chọn mặt báo</option>
+                                        <option value="dantri.com.vn">dantri.com.vn</option>
+                                          <option value="vnexpress.net">vnexpress.net</option>
+                                            <option value="baobinhduong.vn">baobinhduong.vn</option>
+                                    </select>
+                                    <button class="btn btn-primary"  type="submit">Tìm kiếm</button>
+
+                            </div></form>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!-- Categories widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Từ khóa nổi bật</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="/news/?keyword=Covid-19">Covid-19</a></li>
+                                        <li><a href="/news/?keyword=AstraZeneca">Vaccine AstraZeneca</a></li>
+                                        <li><a href="/news/?keyword=hậu covid 19">Hậu covid 19</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="/news/?keyword=vaccine">Vaccine</a></li>
+                                        <li><a href="/news/?keyword=tiêm vắc xin">Tiêm vắc xin</a></li>
+                                        <li><a href="/news/?keyword=tái nhiễm covid 19">Tái nhiễm covid 19</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- block content_thongke
+                    <div class="card mb-4">
+                        <div class="card-header">Thống kê</div>
+<iframe frameborder="0" src="https://gadgets.dantri.com.vn/corona?embed=true" id="dantri-widget-corona-1651155753038" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"
+                                scrolling="yes" style="width: 100%; height: 575.188px; overflow: hidden;"></iframe>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    -->
+                    {% block content_thongke %}
+                    {% endblock %}
+
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Text Mining</div>
+
+                        <div class="card-body">Khai phá văn bản còn được gọi là Text mining.
+                            Nó đề cập đến quá trình trích xuất dữ liệu chất lượng cao từ văn bản.
+                            Nguồn dữ liệu chính là các trang web thương mại điện tử, các nền tảng truyền thông xã hội,
+                            các bài báo đã xuất bản, khảo sát, v.v.</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright Hoang Tuyen | &copy; Thu Dau Mot University 2022</p></div>
+        </footer>
+
+    </body>
+</html>
